@@ -13,6 +13,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      // 指定初始化的路由表
+      initialRoute: "/",
+      // 注册路由表
+      routes: {
+        "new_route":(context)=>NewRoute(),
+        "/":(context)=>MyApp()
+      },
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -52,9 +59,10 @@ class _MyHomePageState extends State<MyHomePage> {
             TextButton(
               child: const Text("open New route"),
               onPressed: () {
-                Navigator.push(context, MaterialPageRoute(builder: (context){
-                  return const NewRoute();
-                }));
+                Navigator.pushNamed(context, "new_route");
+                // Navigator.push(context, MaterialPageRoute(builder: (context){
+                //                 //   return const NewRoute();
+                //                 // }));
               },
             ),
           ],
